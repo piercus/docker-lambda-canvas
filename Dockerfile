@@ -62,7 +62,7 @@ RUN cd ${SRC_DIR} \
     && curl -L http://cairographics.org/releases/cairo-${CAIRO_VERSION}.tar.xz -o cairo-${CAIRO_VERSION}.tar.xz\
     && tar -Jxf cairo-${CAIRO_VERSION}.tar.xz && cd cairo-${CAIRO_VERSION}\
     && ./autogen.sh \
-    && ./configure --disable-dependency-tracking --without-x --prefix=${TMP_INSTALL_PREFIX}
+    && ./configure --disable-dependency-tracking --without-x --prefix=${TMP_INSTALL_PREFIX} \
     && make \
     && make install
 
