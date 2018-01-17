@@ -1,0 +1,3 @@
+FROM myProject:root
+
+RUN npm test

@@ -1,0 +1,27 @@
+FROM piercus/lambda-canvas
+
+ARG ID_RSA
+ARG AWS_ACCESS_KEY_ID
+ARG AWS_SECRET_ACCESS_KEY
+ARG AWS_REGION
+
+ENV AWS_ACCESS_KEY_ID=$AWS_ACCESS_KEY_ID
+ENV AWS_SECRET_ACCESS_KEY=$AWS_SECRET_ACCESS_KEY
+ENV AWS_REGION=$AWS_REGION
+
+RUN mkdir ~/.ssh
+RUN echo "$ID_RSA" > ~/.ssh/id_rsa
+RUN chmod 600 ~/.ssh/id_rsa
+RUN eval `ssh-agent -s` && ssh-add ~/.ssh/id_rsa
+RUN ssh-keyscan -t rsa github.com >> ~/.ssh/known_hosts
+
+WORKDIR ${DIR}
+
+# add all your projects files
+ADD app app
+ADD test test
+ADD package.json package.json
+ADD serverless.yml serverless.yml
+ADD handler.js handler.js
+
+RUN npm install

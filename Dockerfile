@@ -72,11 +72,11 @@ RUN cd ${SRC_DIR} \
     && ./configure --prefix=${TMP_INSTALL_PREFIX}  \
     && make  \
     && make install
-
+    
 RUN cd ${SRC_DIR} \
     && curl -L http://xmlsoft.org/sources/libxml2-${LIBXML2_VERSION}.tar.gz -o libxml2-${LIBXML2_VERSION}.tar.gz  \
     && tar -zxf libxml2-${LIBXML2_VERSION}.tar.gz && cd libxml2-${LIBXML2_VERSION}  \
-    && ./configure --prefix=${TMP_INSTALL_PREFIX}  \
+    && ./configure --prefix=${TMP_INSTALL_PREFIX}  --with-python=no \
     && make  \
     && make install
 
