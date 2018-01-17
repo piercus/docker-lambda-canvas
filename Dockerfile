@@ -17,8 +17,16 @@ ENV CANVAS_INSTALL_PREFIX ${DIR}/build
 
 RUN mkdir -p ${CANVAS_INSTALL_PREFIX}
 
-RUN yum update -y
-RUN yum install -y zlib-devel xz automake which bzip2 libtool
+RUN yum update -y && \
+    yum install -y \
+      zlib-devel \
+      xz \
+      automake \
+      which \
+      bzip2 \
+      libtool \
+      git \
+      openssh-clients
 
 ENV LDFLAGS -Wl,-rpath=${DIR}/lib/
 ENV PKG_CONFIG_PATH ${TMP_INSTALL_PREFIX}/lib/pkgconfig
