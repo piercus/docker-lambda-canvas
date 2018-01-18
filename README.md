@@ -10,6 +10,9 @@ thanks to https://github.com/navihtot/node-caman-aws-lambda/blob/master/how-to.m
 
 docker build -f Dockerfile.default -t piercus/lambda-canvas:default .
 docker build -f Dockerfile.opencv -t piercus/lambda-canvas:opencv .
+
+docker push piercus/lambda-canvas:default
+docker push piercus/lambda-canvas:opencv
 ```
 
 ## How to use it with travis
