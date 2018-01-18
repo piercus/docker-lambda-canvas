@@ -88,3 +88,4 @@ RUN cd ${SRC_DIR} \
     && ./configure --prefix=${TMP_INSTALL_PREFIX}  --enable-libxml2  \
     && make  \
     && make install
+

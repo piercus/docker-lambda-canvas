@@ -3,6 +3,15 @@
 
 thanks to https://github.com/navihtot/node-caman-aws-lambda/blob/master/how-to.md
 
+## Build
+
+```bash
+./build.sh
+
+docker build -f Dockerfile.default -t piercus/lambda-canvas:default .
+docker build -f Dockerfile.opencv -t piercus/lambda-canvas:opencv .
+```
+
 ## How to use it with travis
 
 this is intended to be used inside a lambda function with a docker build process
@@ -18,7 +27,7 @@ services:
   - docker
 
 install:
-  - docker pull piercus/lambda-canvas
+  - docker pull piercus/lambda-canvas:default
   - ID_RSA=$(cat ~/.ssh/id_rsa)
   - docker build -t myProject:root -f docker/myProject.root \
     --build-arg AWS_ACCESS_KEY_ID=$AWS_ACCESS_KEY_ID \
