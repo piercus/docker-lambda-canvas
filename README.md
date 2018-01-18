@@ -1,5 +1,29 @@
 # docker-lambda-canvas
 
+A Docker with :
+* amazon lambda environment
+* node 6
+* npm
+* Canvas (canvas binaries are inside `/var/task/canvas` folder)
+
+## Usage 
+
+To use it just do 
+
+### Step 1: Create a docker to deploy your app
+
+in `Dockerfile` do
+
+```
+FROM piercus/lambda-canvas:default
+
+ADD .
+RUN npm install 
+RUN serverless deploy
+```
+
+
+
 
 thanks to https://github.com/navihtot/node-caman-aws-lambda/blob/master/how-to.md
 
